@@ -65,6 +65,9 @@ module.exports = function (grunt) {
      */
     sass: {
       dev: {
+        options: {
+          sourcemap : 'none'
+        },
         files: {
           '<%= project.css %>' : '<%= project.scss %>'
         }
