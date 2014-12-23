@@ -52,3 +52,7 @@ node_modules
 
 ## Bower
 bower_components
+
+## Prototype
+styles.min.css
+scripts.min.js
