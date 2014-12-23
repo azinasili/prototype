@@ -32,10 +32,12 @@ module.exports = function (grunt) {
      * Set project info
      */
     project: {
-      src  : 'src',
-      app  : 'app',
-      css  : '<%= project.app %>/css/style.css',
-      scss : '<%= project.src %>/scss/styles.scss'
+      src   : 'src',
+      app   : 'app',
+      appjs : '<%= project.app %>/js/scripts.min.js',
+      srcjs : '<%= project.src %>/js/scripts.js',
+      css   : '<%= project.app %>/css/styles.min.css',
+      scss  : '<%= project.src %>/scss/styles.scss'
     },
 
     /**
@@ -52,6 +54,19 @@ module.exports = function (grunt) {
               ' * @version <%= pkg.version %>\n' +
               ' * Copyright <%= pkg.copyright %>. <%= pkg.license %> licensed.\n' +
               ' */\n'
+    },
+
+    /**
+     * Concatenate JavaScript files
+     * https://github.com/gruntjs/grunt-contrib-concat
+     * Imports all .js files and appends project banner
+     */
+    concat: {
+      dev: {
+        files: {
+          '<%= project.appjs %>' : '<%= project.srcjs %>'
+        }
+      }
     },
 
     /**
@@ -78,7 +93,7 @@ module.exports = function (grunt) {
           'last 2 version'
         ]
       },
-      dist: {
+      dev: {
         files: {
           '<%= project.css %>' : '<%= project.css %>'
         }
@@ -137,6 +152,7 @@ module.exports = function (grunt) {
    * Run `grunt` on the command line
    */
   grunt.registerTask('default', [
+    'concat',
     'sass',
     'connect:livereload',
     'open',
