@@ -1,0 +1,12 @@
+{
+  "name": "Prototype",
+  "title": "Simple and fast Grunt boilerplate made for prototyping projects",
+  "url": "https://github.com/azinasili/prototype",
+  "author": "Azin Asili",
+  "copyright": "2014",
+  "version": "0.1.0",
+  "license": "MIT",
+  "devDependencies": {
+    "grunt": "~0.4.5"
+  }
+}
