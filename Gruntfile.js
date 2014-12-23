@@ -41,22 +41,6 @@ module.exports = function (grunt) {
     },
 
     /**
-     * Project banner
-     * Dynamically appended to CSS files
-     * Inherits text from package.json
-     */
-    tag: {
-      banner: '/*!\n' +
-              ' * <%= pkg.name %>\n' +
-              ' * <%= pkg.title %>\n' +
-              ' * <%= pkg.url %>\n' +
-              ' * @author <%= pkg.author %>\n' +
-              ' * @version <%= pkg.version %>\n' +
-              ' * Copyright <%= pkg.copyright %>. <%= pkg.license %> licensed.\n' +
-              ' */\n'
-    },
-
-    /**
      * Concatenate JavaScript files
      * https://github.com/gruntjs/grunt-contrib-concat
      * Imports all .js files and appends project banner
