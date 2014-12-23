@@ -33,7 +33,9 @@ module.exports = function (grunt) {
      */
     project: {
       src  : 'src',
-      app  : 'app'
+      app  : 'app',
+      css  : '<%= project.app %>/css/style.css',
+      scss : '<%= project.src %>/scss/styles.scss'
     },
 
     /**
@@ -50,6 +52,37 @@ module.exports = function (grunt) {
               ' * @version <%= pkg.version %>\n' +
               ' * Copyright <%= pkg.copyright %>. <%= pkg.license %> licensed.\n' +
               ' */\n'
+    },
+
+    /**
+     * Compile Sass/SCSS files
+     * https://github.com/gruntjs/grunt-contrib-sass
+     * Compiles all Sass/SCSS files and appends project banner
+     */
+    sass: {
+      dev: {
+        files: {
+          '<%= project.css %>' : '<%= project.scss %>'
+        }
+      }
+    },
+
+    /**
+     * Autoprefixer
+     * Adds vendor prefixes automatically
+     * https://github.com/nDmitry/grunt-autoprefixer
+     */
+    autoprefixer: {
+      options: {
+        browsers: [
+          'last 2 version'
+        ]
+      },
+      dist: {
+        files: {
+          '<%= project.css %>' : '<%= project.css %>'
+        }
+      }
     },
 
     /**
@@ -104,6 +137,7 @@ module.exports = function (grunt) {
    * Run `grunt` on the command line
    */
   grunt.registerTask('default', [
+    'sass',
     'connect:livereload',
     'open',
     'watch'
