@@ -129,11 +129,24 @@ module.exports = function (grunt) {
      * Livereload the browser once complete
      */
     watch: {
+      concat: {
+        files: '<%= project.src %>/js/{,*/}*.js',
+        tasks: 'concat:dev'
+      },
+      sass: {
+        files: '<%= project.src %>/scss/{,*/}*.{scss,sass}',
+        tasks: ['sass:dev', 'autoprefixer:dev']
+      },
       livereload: {
         options: {
           livereload: LIVERELOAD_PORT
         },
-        files: '<%= project.app %>/{,*/}*.html'
+        files: [
+          '<%= project.app %>/{,*/}*.html',
+          '<%= project.app %>/css/*.css',
+          '<%= project.app %>/js/{,*/}*.js',
+          '<%= project.app %>/{,*/}*.{png,jpg,jpeg,gif,webp,svg}'
+        ]
       }
     }
 
@@ -146,6 +159,7 @@ module.exports = function (grunt) {
   grunt.registerTask('default', [
     'concat',
     'sass',
+    'autoprefixer',
     'connect:livereload',
     'open',
     'watch'
