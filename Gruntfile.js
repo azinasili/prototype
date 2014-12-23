@@ -22,6 +22,11 @@ var mountFolder = function (connect, dir) {
 module.exports = function (grunt) {
 
   /**
+   * Dynamically load npm tasks
+   */
+  require('load-grunt-tasks')(grunt);
+
+  /**
    * Grunt config
    */
   grunt.initConfig({
