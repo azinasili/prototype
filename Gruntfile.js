@@ -106,7 +106,7 @@ module.exports = function (grunt) {
       livereload: {
         options: {
           middleware: function (connect) {
-            return [lrSnippet, mountFolder(connect, 'demo')];
+            return [lrSnippet, mountFolder(connect, 'app')];
           }
         }
       }
